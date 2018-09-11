@@ -1,6 +1,4 @@
-import java.util.function.Consumer;
 import java.util.List;
-
 
 public class Person {
 
@@ -17,15 +15,6 @@ public class Person {
             System.out.println(item);
         }
     }
-
-    Consumer<List<Person>> myPrinter = new Consumer<List<Person>>() {
-        @Override
-        public void accept(List<Person> arrList) {
-            for (Person item : arrList) {
-                System.out.println(item);
-            }
-        }
-    };
 
     public String toString() {
         return "Name: " + name + " Address: " + address.getStreet() + " " + address.getHouseNum();

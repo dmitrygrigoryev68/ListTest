@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 public class Collection {
 
+
     public static void main(String[] args) {
 
         Address a1 = new Address("Lenin", "101");
@@ -21,7 +22,17 @@ public class Collection {
         Person p6 = new Person("Feodor Bumaga", a6);
         Person p7 = new Person("Natalia Draga", a1);
 
-        List<Person> arrayList = new ArrayList<>();
+      /*  List<Address> arrayListAddress  = new ArrayList<Address>(  );
+
+        arrayListAddress.add(a1);
+        arrayListAddress.add(a2);
+        arrayListAddress.add(a3);
+        arrayListAddress.add(a4);
+        arrayListAddress.add(a5);
+        arrayListAddress.add(a6);*/
+
+
+        List<Person> arrayList = new ArrayList<Person>();
         arrayList.add(p1);
         arrayList.add(p2);
         arrayList.add(p3);
@@ -29,6 +40,7 @@ public class Collection {
         arrayList.add(p5);
         arrayList.add(p6);
         arrayList.add(p7);
+
 
         Consumer<List<Person>> myPrinter = arrList -> {
             for (Person item : arrList) {
