@@ -11,5 +11,4 @@ public class Address {
     public String toString() {
         return "Address: " + street + " " + houseNum;
     }
-
 }
