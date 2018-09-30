@@ -4,7 +4,9 @@ import java.util.function.Consumer;
 
 public class ListTest {
 
+
     public static void main(String[] args) {
+
 
         Address a1 = new Address("Lenin", "101");
         Address a2 = new Address("Libknecht", "95");
@@ -33,21 +35,18 @@ public class ListTest {
 
         List<Address> arrayListAddress = new ArrayList<>();
 
+
         Consumer<List<Person>> getAddresses = arrList -> {
-            for (int i = 0; i < arrayListPerson.size(); i++) {
-                arrayListAddress.add(arrayListPerson.get(i).getAddress());
+            for (Person person : arrayListPerson) {
+                Address address = person.getAddress();
+                arrayListAddress.add(address);
             }
         };
-        Consumer<List<Address>> myPrinter = arrList -> {
-            for (Address item : arrList) {
-                System.out.println(item);
-            }
-        };
+        Consumer<List<Address>> myPrinter = System.out::println;
 
         getAddresses.accept(arrayListPerson);
 
         myPrinter.accept(arrayListAddress);
-
     }
-
 }
+
