@@ -86,7 +86,7 @@ public class ListTest {
         System.out.println("-----------Map bank account---------------\n");
         myPrinterMapPerson(groupByPerson(p4, accounts));
         System.out.println("-----------List bank account with stars---------\n");
-        myPrinterAcc(returnWithStars(accounts));
+        myPrinterAccWithStars(accounts);
         System.out.println("-----------Sum of ages---------\n");
         System.out.println(sumOfAgesPersonsOlderThan17(persons));
         System.out.println("-----------Legal people---------\n");
@@ -127,13 +127,6 @@ public class ListTest {
                 .collect(Collectors.groupingBy(BankAccount::getPerson));
     }
 
-    public static List<BankAccount> returnWithStars(List<BankAccount> accounts) {
-        return accounts
-                .stream()
-                .peek(s -> s.setIbanWithStars())
-                .collect(Collectors.toList());
-    }
-
     public static Integer sumOfAgesPersonsOlderThan17(List<Person> users) {
         return users
                 .stream()
@@ -147,7 +140,7 @@ public class ListTest {
                 .stream()
                 .filter(s -> s.getAge() > 17)
                 .map(Person::getName)
-                .collect(Collectors.joining(" and ", "In Germany ", " are of legal age."));
+                .collect(Collectors.joining(" and ", "In Germany ", " are of legal age.\n"));
     }
 
     public static void myPrinter(List<Person> person) {
@@ -161,7 +154,11 @@ public class ListTest {
     }
 
     public static void myPrinterMapInt(Map<Integer, List<Person>> map) {
-        System.out.println(map);
+        map.forEach((key, value) ->
+                System.out.println("Age :"+ key + "\n" + value
+                        .stream()
+                        .map(Person::getName)
+                        .collect(Collectors.joining("\n"))+"\n"));
     }
 
     public static void myPrinterMapPerson(Map<Person, List<BankAccount>> map) {
@@ -169,12 +166,12 @@ public class ListTest {
                 value
                         .stream()
                         .map(BankAccount::getIban)
-                        .collect(Collectors.joining("\n"))));
+                        .collect(Collectors.joining("\n"))+"\n"));
     }
 
-    public static void myPrinterAcc(List<BankAccount> accounts) {
+    public static void myPrinterAccWithStars(List<BankAccount> accounts) {
         accounts.stream()
-                .forEach(s -> System.out.println(s));
+                .forEach(s -> System.out.println(s.getIban().substring(0, 5) + "************"));
     }
 }
 
