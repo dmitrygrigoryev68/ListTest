@@ -13,12 +13,12 @@ public class ListTest {
         Address a5 = new Address("Luxemburg", "210");
         Address a6 = new Address("Zetkin", "322");
 
-        Person p1 = new Person("Ivan    Draga", 41, a1);
-        Person p2 = new Person("Stepan  Praga", 16, a2);
-        Person p3 = new Person("Oleg    Braga", 41, a3);
-        Person p4 = new Person("Bogdan  Wlaga", 17, a4);
+        Person p1 = new Person("Ivan Draga", 41, a1);
+        Person p2 = new Person("Stepan Praga", 16, a2);
+        Person p3 = new Person("Oleg Braga", 41, a3);
+        Person p4 = new Person("Bogdan Wlaga", 17, a4);
         Person p5 = new Person("Roman Schpaga", 28, a5);
-        Person p6 = new Person("Feodor   Saga", 14, a6);
+        Person p6 = new Person("Feodor Saga", 14, a6);
         Person p7 = new Person("Natalia Draga", 38, a1);
 
         BankAccount b1 = new BankAccount(p1, "DE5676609876556581");
@@ -158,7 +158,11 @@ public class ListTest {
     }
 
     public static void myPrinterMapPerson(Map<Person, List<BankAccount>> map) {
-        System.out.println(map);
+        map.forEach((key, value) -> System.out.println(key + "\nAccounts:\n" +
+                value
+                        .stream()
+                        .map(BankAccount::getIban)
+                        .collect(Collectors.joining("\n"))));
     }
 
     public static void myPrinterAcc(List<BankAccount> accounts) {

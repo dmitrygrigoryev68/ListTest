@@ -12,6 +12,7 @@ public class BankAccount {
     public Person getPerson() {
         return person;
     }
+    public String getIban() {return iban;}
 
     public void setIbanWithStars() {
         this.iban = iban.substring(0, 5) + "************";
