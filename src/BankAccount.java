@@ -13,7 +13,7 @@ public class BankAccount {
         return person;
     }
 
-    public void setIbanWithSrars() {
+    public void setIbanWithStars() {
         this.iban = iban.substring(0, 5) + "************";
     }
 

@@ -1,4 +1,4 @@
-public class  Address {
+public class Address {
 
     String street;
     String houseNum;
@@ -9,6 +9,6 @@ public class  Address {
     }
 
     public String toString() {
-        return "  Address: " + street + " str. " + houseNum +"\n";
+        return "  Address: " + street + " str. " + houseNum + "\n";
     }
 }

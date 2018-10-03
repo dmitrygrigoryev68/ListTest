@@ -125,19 +125,21 @@ public class ListTest {
                 .stream().filter(acc -> acc.getPerson().equals(person))
                 .collect(Collectors.groupingBy(BankAccount::getPerson));
     }
-    public static List<BankAccount> returnWithStars (List<BankAccount> accounts){
+
+    public static List<BankAccount> returnWithStars(List<BankAccount> accounts) {
         return accounts
                 .stream()
-                .peek(s-> s.setIbanWithSrars())
+                .peek(s -> s.setIbanWithStars())
                 .collect(Collectors.toList());
 
     }
+
     public static Integer sumOfAgesPersonsOlderThen17(List<Person> users) {
         return users
                 .stream()
                 .filter(s -> s.getAge() > 17)
                 .map(Person::getAge)
-                .reduce((x,y)->x+y).get();
+                .reduce((x, y) -> x + y).get();
     }
 
     public static String legalAgeString(List<Person> users) {
@@ -145,7 +147,7 @@ public class ListTest {
                 .stream()
                 .filter(s -> s.getAge() > 17)
                 .map(Person::getName)
-                .collect(Collectors.joining(" and ","In Germany "," are of legal age."));
+                .collect(Collectors.joining(" and ", "In Germany ", " are of legal age."));
     }
 
     public static void myPrinter(List<Person> person) {
@@ -165,6 +167,7 @@ public class ListTest {
     public static void myPrinterMapPerson(Map<Person, List<BankAccount>> map) {
         System.out.println(map);
     }
+
     public static void myPrinterAcc(List<BankAccount> accounts) {
         accounts.stream()
                 .forEach(s -> System.out.println(s));
