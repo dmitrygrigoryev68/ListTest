@@ -9,6 +9,6 @@ public class  Address {
     }
 
     public String toString() {
-        return "Address: " + street + " " + houseNum +"\n";
+        return "  Address: " + street + " str. " + houseNum +"\n";
     }
 }
