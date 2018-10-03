@@ -1,6 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
-
+import java.util.stream.Stream;
 
 public class ListTest {
 
@@ -15,23 +15,23 @@ public class ListTest {
         Address a5 = new Address("Luxemburg", "210");
         Address a6 = new Address("Zetkin", "322");
 
-        Person p1 = new Person("Ivan Draga", 41, a1);
-        Person p2 = new Person("Stepan Praga", 16, a2);
-        Person p3 = new Person("Oleg Braga", 41, a3);
-        Person p4 = new Person("Bogdan Wlaga", 17, a4);
+        Person p1 = new Person("Ivan    Draga", 41, a1);
+        Person p2 = new Person("Stepan  Praga", 16, a2);
+        Person p3 = new Person("Oleg    Braga", 41, a3);
+        Person p4 = new Person("Bogdan  Wlaga", 17, a4);
         Person p5 = new Person("Roman Schpaga", 28, a5);
-        Person p6 = new Person("Feodor Saga", 14, a6);
+        Person p6 = new Person("Feodor   Saga", 14, a6);
         Person p7 = new Person("Natalia Draga", 38, a1);
 
-        BankAccount b1 = new BankAccount(p1, "DE5676609876556581");
-        BankAccount b2 = new BankAccount(p1, "DE5676609876556582");
-        BankAccount b3 = new BankAccount(p1, "DE5676609876556583");
-        BankAccount b4 = new BankAccount(p2, "DE5676609876556584");
-        BankAccount b5 = new BankAccount(p2, "DE5676609876556585");
-        BankAccount b6 = new BankAccount(p3, "DE5676609876556586");
-        BankAccount b7 = new BankAccount(p3, "DE5676609876556587");
-        BankAccount b8 = new BankAccount(p4, "DE5676609876556588");
-        BankAccount b9 = new BankAccount(p4, "DE5676609876556589");
+        BankAccount b1 =  new BankAccount(p1, "DE5676609876556581");
+        BankAccount b2 =  new BankAccount(p1, "DE5676609876556582");
+        BankAccount b3 =  new BankAccount(p1, "DE5676609876556583");
+        BankAccount b4 =  new BankAccount(p2, "DE5676609876556584");
+        BankAccount b5 =  new BankAccount(p2, "DE5676609876556585");
+        BankAccount b6 =  new BankAccount(p3, "DE5676609876556586");
+        BankAccount b7 =  new BankAccount(p3, "DE5676609876556587");
+        BankAccount b8 =  new BankAccount(p4, "DE5676609876556588");
+        BankAccount b9 =  new BankAccount(p4, "DE5676609876556589");
         BankAccount b10 = new BankAccount(p4, "DE5676609876556590");
         BankAccount b11 = new BankAccount(p4, "DE5676609876556591");
         BankAccount b12 = new BankAccount(p5, "DE5676609876556592");
@@ -172,7 +172,6 @@ public class ListTest {
         accounts.stream()
                 .forEach(s -> System.out.println(s));
     }
-
 }
 
 
