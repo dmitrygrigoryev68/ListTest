@@ -91,8 +91,9 @@ public class ListTest {
         System.out.println(sumOfAgesPersonsOlderThan17(persons));
         System.out.println("-----------Legal people---------\n");
         System.out.println(legalAgeString(persons));
+        System.out.println("-----------Accaunts map by person---------\n");
+        myPrinterMapPerson(mapAccByPerson(accounts));
     }
-
 
     public static List<Person> peopleOlderThan17(List<Person> persons) {
         return persons
@@ -117,6 +118,12 @@ public class ListTest {
     public static Map<Person, List<BankAccount>> groupByPerson(Person person, List<BankAccount> accounts) {
         return accounts
                 .stream().filter(acc -> acc.getPerson().equals(person))
+                .collect(Collectors.groupingBy(BankAccount::getPerson));
+    }
+
+    public static Map<Person, List<BankAccount>> mapAccByPerson(List<BankAccount> accounts) {
+        return accounts
+                .stream()
                 .collect(Collectors.groupingBy(BankAccount::getPerson));
     }
 
