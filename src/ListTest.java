@@ -4,9 +4,7 @@ import java.util.stream.Stream;
 
 public class ListTest {
 
-
     public static void main(String[] args) {
-
 
         Address a1 = new Address("Lenin", "101");
         Address a2 = new Address("Libknecht", "95");
@@ -23,19 +21,18 @@ public class ListTest {
         Person p6 = new Person("Feodor   Saga", 14, a6);
         Person p7 = new Person("Natalia Draga", 38, a1);
 
-        BankAccount b1 =  new BankAccount(p1, "DE5676609876556581");
-        BankAccount b2 =  new BankAccount(p1, "DE5676609876556582");
-        BankAccount b3 =  new BankAccount(p1, "DE5676609876556583");
-        BankAccount b4 =  new BankAccount(p2, "DE5676609876556584");
-        BankAccount b5 =  new BankAccount(p2, "DE5676609876556585");
-        BankAccount b6 =  new BankAccount(p3, "DE5676609876556586");
-        BankAccount b7 =  new BankAccount(p3, "DE5676609876556587");
-        BankAccount b8 =  new BankAccount(p4, "DE5676609876556588");
-        BankAccount b9 =  new BankAccount(p4, "DE5676609876556589");
+        BankAccount b1 = new BankAccount(p1, "DE5676609876556581");
+        BankAccount b2 = new BankAccount(p1, "DE5676609876556582");
+        BankAccount b3 = new BankAccount(p1, "DE5676609876556583");
+        BankAccount b4 = new BankAccount(p2, "DE5676609876556584");
+        BankAccount b5 = new BankAccount(p2, "DE5676609876556585");
+        BankAccount b6 = new BankAccount(p3, "DE5676609876556586");
+        BankAccount b7 = new BankAccount(p3, "DE5676609876556587");
+        BankAccount b8 = new BankAccount(p4, "DE5676609876556588");
+        BankAccount b9 = new BankAccount(p4, "DE5676609876556589");
         BankAccount b10 = new BankAccount(p4, "DE5676609876556590");
         BankAccount b11 = new BankAccount(p4, "DE5676609876556591");
         BankAccount b12 = new BankAccount(p5, "DE5676609876556592");
-
 
         List<Person> persons = new ArrayList<>();
         persons.add(p1);
@@ -91,10 +88,9 @@ public class ListTest {
         System.out.println("-----------List bank account with stars---------\n");
         myPrinterAcc(returnWithStars(accounts));
         System.out.println("-----------Sum of ages---------\n");
-        System.out.println(sumOfAgesPersonsOlderThen17(persons));
+        System.out.println(sumOfAgesPersonsOlderThan17(persons));
         System.out.println("-----------Legal people---------\n");
         System.out.println(legalAgeString(persons));
-
     }
 
 
@@ -105,13 +101,11 @@ public class ListTest {
                 .collect(Collectors.toList());
     }
 
-
     public static List<String> distinctedNames(List<String> names) {
         return names
                 .stream()
                 .distinct()
                 .collect(Collectors.toList());
-
     }
 
     public static Map<Integer, List<Person>> groupByAge(int age, List<Person> persons) {
@@ -131,10 +125,9 @@ public class ListTest {
                 .stream()
                 .peek(s -> s.setIbanWithStars())
                 .collect(Collectors.toList());
-
     }
 
-    public static Integer sumOfAgesPersonsOlderThen17(List<Person> users) {
+    public static Integer sumOfAgesPersonsOlderThan17(List<Person> users) {
         return users
                 .stream()
                 .filter(s -> s.getAge() > 17)
