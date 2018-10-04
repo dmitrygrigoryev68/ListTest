@@ -6,6 +6,10 @@ public class ListTest {
 
     public static void main(String[] args) {
 
+        String sentence = "To be or not to be - that is the question!";
+
+        String integer = "1283483985298592";
+
         Address a1 = new Address("Lenin", "101");
         Address a2 = new Address("Libknecht", "95");
         Address a3 = new Address("Marx", "16");
@@ -86,13 +90,17 @@ public class ListTest {
         System.out.println("-----------Map bank account---------------\n");
         myPrinterMapPerson(groupByPerson(p4, accounts));
         System.out.println("-----------List bank account with stars---------\n");
-        myPrinterAccWithStars(accounts);
+        myPrinterAcc(ibanWithStars(accounts));
         System.out.println("-----------Sum of ages---------\n");
         System.out.println(sumOfAgesPersonsOlderThan17(persons));
         System.out.println("-----------Legal people---------\n");
         System.out.println(legalAgeString(persons));
         System.out.println("-----------Accaunts map by person---------\n");
         myPrinterMapPerson(mapAccByPerson(accounts));
+        System.out.println("-----------First book in sentence---------\n");
+        System.out.println(firstBooksFromSentenceCounter("t", sentence));
+        System.out.println("-----------Is Number ?---------\n");
+        System.out.println(isTheStringInteger(integer));
     }
 
     public static List<Person> peopleOlderThan17(List<Person> persons) {
@@ -127,6 +135,12 @@ public class ListTest {
                 .collect(Collectors.groupingBy(BankAccount::getPerson));
     }
 
+    public static List<String> ibanWithStars(List<BankAccount> accounts) {
+        return accounts.stream()
+                .map(s -> s.getIban().substring(0, 5) + "***************")
+                .collect(Collectors.toList());
+    }
+
     public static Integer sumOfAgesPersonsOlderThan17(List<Person> users) {
         return users
                 .stream()
@@ -143,6 +157,22 @@ public class ListTest {
                 .collect(Collectors.joining(" and ", "In Germany ", " are of legal age.\n"));
     }
 
+    public static Integer firstBooksFromSentenceCounter(String book, String sentence) {
+        String[] arr = sentence.split(" ");
+        List<String> list = Arrays.asList(arr);
+        return Math.toIntExact(list
+                .stream()
+                .map(s -> s.substring(0, 1))
+                .filter(s -> s.equals(book))
+                .count());
+    }
+
+    public static boolean isTheStringInteger(String string) {
+        return string.chars().allMatch((Character::isDigit));
+    }
+
+/////////////////////////////////////  PRINTERS /////////////////////////////////////
+
     public static void myPrinter(List<Person> person) {
         person.stream()
                 .forEach(s -> System.out.println(s));
@@ -155,10 +185,10 @@ public class ListTest {
 
     public static void myPrinterMapInt(Map<Integer, List<Person>> map) {
         map.forEach((key, value) ->
-                System.out.println("Age :"+ key + "\n" + value
+                System.out.println("Age :" + key + "\n" + value
                         .stream()
                         .map(Person::getName)
-                        .collect(Collectors.joining("\n"))+"\n"));
+                        .collect(Collectors.joining("\n")) + "\n"));
     }
 
     public static void myPrinterMapPerson(Map<Person, List<BankAccount>> map) {
@@ -166,13 +196,11 @@ public class ListTest {
                 value
                         .stream()
                         .map(BankAccount::getIban)
-                        .collect(Collectors.joining("\n"))+"\n"));
+                        .collect(Collectors.joining("\n")) + "\n"));
     }
 
-    public static void myPrinterAccWithStars(List<BankAccount> accounts) {
+    public static void myPrinterAcc(List<String> accounts) {
         accounts.stream()
-                .forEach(s -> System.out.println(s.getIban().substring(0, 5) + "************"));
+                .forEach(s -> System.out.println(s));
     }
 }
-
-
