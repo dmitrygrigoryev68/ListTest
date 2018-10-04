@@ -157,14 +157,13 @@ public class ListTest {
                 .collect(Collectors.joining(" and ", "In Germany ", " are of legal age.\n"));
     }
 
-    public static Integer firstBooksFromSentenceCounter(String book, String sentence) {
+    public static Long firstBooksFromSentenceCounter(String book, String sentence) {
         String[] arr = sentence.split(" ");
         List<String> list = Arrays.asList(arr);
-        return Math.toIntExact(list
+        return list
                 .stream()
-                .map(s -> s.substring(0, 1))
-                .filter(s -> s.equals(book))
-                .count());
+                .filter(s -> s.startsWith(book))
+                .count();
     }
 
     public static boolean isTheStringInteger(String string) {
